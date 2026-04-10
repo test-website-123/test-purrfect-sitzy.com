@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -18,7 +22,7 @@
     header {
       background: #ff7aa2;
       color: white;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
     }
 
@@ -72,6 +76,18 @@
       color: #f4b400;
     }
 
+    
+.swiper {
+  width: 100%;
+  max-width: 700px;
+}
+
+.swiper img {
+  width: 100%;
+  display: block;
+}
+
+
   </style>
 </head>
 <body>
@@ -98,6 +114,21 @@
     <li> Photo and Video Updates in regular intervals</li>
   </ul>
 </section>
+
+  <section>
+    
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="img1.jpg"></div>
+    <div class="swiper-slide"><img src="img2.jpg"></div>
+    <div class="swiper-slide"><img src="img3.jpg"></div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+  </section>
   
 <!-- CUSTOMER REVIEWS -->
   <section> 
@@ -149,6 +180,23 @@
 <script
   src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initReviews"
   async defer>
+</script>
+
+  
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 </script>
 
 
