@@ -66,6 +66,19 @@
       background: #222;
       color: #ccc;
     }
+
+    
+.review {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .author {
+      font-weight: bold;
+    }
+    .rating {
+      color: #f4b400;
+    }
+
   </style>
 </head>
 
@@ -94,6 +107,10 @@
   </ul>
 </section>
 
+  
+<h2>Customer Reviews</h2>
+<div id="reviews"></div>
+
 <!-- CONTACT FORM -->
 <section>
   <h2>Contact Us</h2>
@@ -108,6 +125,38 @@
     <button type="submit">Send Enquiry</button>
   </form>
 </section>
+
+  
+<script>
+  function initReviews() {
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+
+    service.getDetails({
+      placeId: 'YOUR_PLACE_ID',
+      fields: ['reviews']
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        let html = '';
+        place.reviews.slice(0, 5).forEach(review => {
+          html += `
+            <div class="review">
+              <div class="author">${review.author_name}</div>
+              <div class="rating">⭐ ${review.rating}</div>
+              <div>${review.text}</div>
+            </div>
+          `;
+        });
+        document.getElementById('reviews').innerHTML = html;
+      }
+    });
+  }
+</script>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initReviews"
+  async defer>
+</script>
+
 
 <footer>
   <p>© 2026 Purrfect Sitzy</p>
